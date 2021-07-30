@@ -15,7 +15,7 @@ git clone https://github.com/v-ch322/docker-ssh-ansible.git
 cd docker-ssh-ansible/
 docker-compose up -d
 
-3. After making the net and the containers it should to enter SSH_client container
+3. After making the net and the containers it should to enter SSH_client container:
 docker exec -it cli /bin/bash
 
 4. Enter in ansible directory:
@@ -24,7 +24,8 @@ cd /ansible/nginx
 5. Run playbook by the command:
 ansible-playbook -i myhost make_Nginx.yml
 
-6.After running the playbook you can see a result (static web-page) on the port 127.0.0.1:8000.
+6.After running the playbook you can see a result (static web-page) on the port
+127.0.0.1:8000.
 
 P.S. You can add your playbook placing the necessary files in 'ansible' directory of cloned repo,
 it will be placed in the container after the running of 'docker-compose up -d'.

@@ -1,0 +1,6 @@
+[nserver]
+server1 ansible_host=serv ansible_ssh_private_key_file=/root/.ssh/july29 ansible_ssh_user=root
+
+[nserver:vars]
+ansible_python_interpreter=/usr/bin/python3
+

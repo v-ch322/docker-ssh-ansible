@@ -1,0 +1,56 @@
+---
+#                                    !!!
+# This playbook is made only for Docker-compose use (user=root), for the case of EC2 user should be 'ubuntu' or similar.
+# The changes should be made at '# change user here'
+#                                    !!!
+# This playbook is started with a command "ansible-playbook -i myhost make_Nginx.yml"
+# If ENV ANSIBLE_HOST_KEY_CHECKING=False is not inserted in ./d_cli/Dockerfile the command will be as follows:
+# "ansible-playbook -i myhost make_Nginx.yml --ssh-common-args='-o StrictHostKeyChecking=no'"
+
+# File 'myhost' is in the current directory.
+# Before the start of the playbook IP of the host should be inserted in file 'myhost', [nserver]
+
+- hosts: nserver
+  remote_user: root # change user here
+  become: true 
+  become_user: root
+  become_method: sudo
+# sudo is the destination choice, maybe, here it can be omitted
+
+  tasks:
+# Corresponds to 'sudo apt update'
+  - name: Update apt repo and cache on all Debian/Ubuntu boxes
+    apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+# corresponds to 'sudo apt upgrade'
+  - name: Upgrade all packages on servers
+    apt: upgrade=dist force_apt_get=yes 
+
+# Corresponds to 'sudo apt install nginx'
+  - name: Install nginx
+    apt:
+      name=nginx
+      state=latest
+
+# Corresponds to 'sudo systemctl start nginx' 
+  - name: start nginx
+    service:
+      name=nginx
+      state=started
+
+# Corresponds to 'sudo systemctl reload nginx' 
+  - name: restart nginx
+    service:
+      name=nginx
+      state=restarted
+
+    register: nginx 
+
+# Here we replace the standard nginx page with our own page being in the current directory      
+  - name: Copying file in the created directory #success
+    copy:
+       src: index.html
+       dest: /var/www/html/index.html
+       owner: root # change user here
+       group: root # change user here
+       mode: 0644

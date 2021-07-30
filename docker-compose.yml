@@ -1,0 +1,32 @@
+version: '3'
+services:
+  docker_cli:
+    container_name: cli
+
+    build:
+        context: ./d_cli
+        dockerfile: Dockerfile
+    volumes:
+        - ./d_cli:/work
+        - ./ansible:/ansible
+    command: "/work/infty.sh &"
+    networks:
+      - ansible_ssh
+
+  docker_serv:
+    container_name: serv
+    build:
+        context: ./d_serv
+        dockerfile: Dockerfile    
+    ports:
+        - "8000:80"
+    volumes:
+        - ./d_serv:/work
+    command: "/work/infty.sh &"
+    networks:
+      - ansible_ssh
+
+networks:
+  ansible_ssh:
+    # Use a custom driver
+     driver: bridge

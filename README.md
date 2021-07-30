@@ -27,7 +27,7 @@ docker-compose up -d
 
 docker exec -it cli /bin/bash
 
-4. Enter in ansible directory:
+4. Enter in the ansible directory:
 
 cd /ansible/nginx
 
@@ -39,6 +39,6 @@ ansible-playbook -i myhost make_Nginx.yml
 
 127.0.0.1:8000.
 
-P.S. You can add your playbook placing the necessary files in 'ansible' directory of cloned repo,
-it will be placed in the container after the running of 'docker-compose up -d'.
-Then you can run your playbook, the routine was fulfillied in 'serv' container.
+P.S. You can add your playbook placing the necessary files in 'ansible' directory of the cloned repo,
+they will be placed in the container after the running of 'docker-compose up -d'.
+Then you can run your playbook, the routine was fulfilled in 'serv' container.

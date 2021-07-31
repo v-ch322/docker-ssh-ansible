@@ -41,4 +41,5 @@ ansible-playbook -i myhost make_Nginx.yml
 
 P.S. You can add your playbook placing the necessary files in 'ansible' directory of the cloned repo,
 they will be placed in the container after the running of 'docker-compose up -d'.
-Then you can run your playbook, the routine was fulfilled in 'serv' container.
+File 'myhost' should be in playbook directory, command: ansible-playbook -i myhost <name-of-playbook>.yml
+Then you can run your playbook, the routine will be fulfilled in 'serv' container.

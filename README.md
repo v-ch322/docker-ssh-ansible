@@ -44,4 +44,5 @@ they will be placed in the container after the running of 'docker-compose up -d'
 File 'myhost' should be in playbook directory, command:
 
 ansible-playbook -i myhost <name-of-playbook>.yml
-Then you can run your playbook, the routine will be fulfilled in 'serv' container.
+
+The routine provided by the playbook will be fulfilled in 'serv' container.

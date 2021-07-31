@@ -43,6 +43,6 @@ P.S. You can add your playbook placing the necessary files in 'ansible' director
 they will be placed in the container after the running of 'docker-compose up -d'.
 File 'myhost' should be in playbook directory, command:
 
-ansible-playbook -i myhost <name-of-playbook>.yml
+ansible-playbook -i myhost name-of-playbook.yml
 
 The routine provided by the playbook will be fulfilled in 'serv' container.

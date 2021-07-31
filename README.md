@@ -8,7 +8,7 @@ Creation of SSH-client (cli) and SSH-server (serv) containers with keys (of nece
 
 Installation of Ansible in SSH-client container.
 
-Docker (20.10.7) and docker-compose (1.29.2) should be preliminary installed.
+Docker (I used 20.10.7) and docker-compose (I used 1.29.2) should be preliminary installed.
 
 To run this application do:
 
@@ -27,7 +27,7 @@ docker-compose up -d
 
 docker exec -it cli /bin/bash
 
-4. Enter in the ansible directory:
+4. Enter the ansible/nginx directory:
 
 cd /ansible/nginx
 

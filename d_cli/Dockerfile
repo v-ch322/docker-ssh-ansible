@@ -9,7 +9,7 @@ RUN apt -y update && apt -y install ansible
 RUN apt install -y python3-pip
 RUN pip3 install boto boto3
 ENV ANSIBLE_HOST_KEY_CHECKING=False
-# july29 should have chmod 400 as the public key
+# july29 file should have chmod 400 as the public key
 COPY july29 /root/.ssh/july29
 RUN ["chmod", "400", "/root/.ssh/july29"]
 EXPOSE 22
